@@ -1,0 +1,14 @@
+ {% for product in collections[child_list_handle].products limit:2 %}
+
+<div>
+  <a href="{{ url }}">
+    <div style="background-image: url('{{ product.featured_image | product_img_url: 'large' }}'); width:200px; height:200px; ">   </div>
+    {{ product.title }}
+  {{ product.price | money_with_currency }}
+  
+
+ 
+  </a>
+</div>
+
+{% endfor %} 
