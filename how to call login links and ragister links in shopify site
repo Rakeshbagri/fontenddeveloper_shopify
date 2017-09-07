@@ -1,0 +1,17 @@
+{% if customer %}
+              <a href="/account" class="">
+                
+                <span class=" ">{{ 'layout.customer.account' | t }}</span>
+              </a>
+            {% else %}
+              <a href="/account/login" class="">
+                 
+                <span class=" ">{{ 'layout.customer.log_in' | t }}</span>
+              </a>
+  
+  <a href="/account/register" class="">
+                 
+                <span class=" ">{{ 'layout.customer.log_in' | t }}</span>
+              </a>
+  
+            {% endif %}
