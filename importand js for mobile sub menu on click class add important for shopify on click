@@ -1,0 +1,57 @@
+<style>
+     
+      .rakesh{display:block !important; }
+    </style>
+    
+     <script>
+       
+       
+ $(document).ready(function(e) {
+    $(".mnav").click(function(){
+	 $(".nar").toggleClass("rakesh");	
+	});
+});
+     
+   
+      $(document).ready(function(e) {
+            $(".nar a").click(function(){
+              
+              if($(this).next("ul").attr("class") != 'submenu rs'){
+                $(".nar ul").removeClass('rs');
+              	$(this).next("ul").addClass("rs");	
+              }else{
+                $(".nar ul").removeClass('rs');
+              }
+            });
+        
+        	
+         });
+    
+    </script>
+    
+    mobile menu code change name of <em>new-main-menu.links</em>
+    
+     <div id="navigation">      
+        <nav id="nav" role="navigation">
+          <a href="#" title="Show navigation" class="mnav">MENU</a>
+          <ul class="nar">
+            {% for link in linklists.new-main-menu.links %}
+            <li>{{ link.title | link_to: link.url  }}
+              {% capture child_list_handle %}{{ link.title | handleize }}{% endcapture %}
+              {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+              <ul class="submenu">
+                {% for l in linklists[child_list_handle].links %}
+                <li><a href="{{ l.url }}">{{ l.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+
+          </ul>   
+        </nav>	        
+      </div> 
+  
+  
+  
+  
