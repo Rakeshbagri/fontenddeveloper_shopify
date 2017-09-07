@@ -1,0 +1,7 @@
+<img src="{{ '25.png' | asset_url }}"> 
+
+If home page condition
+
+{% if template == 'index' %}
+<div class="home-news-letter"> </div>
+{%endif%}
