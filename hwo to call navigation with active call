@@ -1,0 +1,6 @@
+
+<ul class="unstyled">
+  {% for link in linklists.man.links %}
+  <li class="span3 {% if link.active %} active {% endif %}"><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+  {% endfor %}
+</ul>
