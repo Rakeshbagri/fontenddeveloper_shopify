@@ -1,0 +1,30 @@
+<h2>Recent Posts</h2>
+<ul>
+{% for article in blogs.news.articles limit: 5 %}
+<li><a href="{{ article.url }}">{{ article.title }}</a> <span>{{ article.created_at | date: "%d.%m.%Y" }}</span></li>
+{% endfor %}
+</ul>
+
+with images and redmore button 
+
+<div class="l-blog">
+     <h2>{{ 'blogs.sidebar.recent_articles' | t }}</h2>
+    <div id="flexslider2">
+    <ul class="rk-slides">
+    {% for article in blogs.news.articles limit:3  %}
+    <li>
+    {% if article.image %}
+    {% assign image_alt = article.title | escape %}
+    {{ article | img_url: 'compact' | img_tag: image_alt, 'article__image' | link_to: article.url }}
+    {% endif %}
+    <div class="con">
+    <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+    <em class="text-light">{{ article.published_at | date: format: 'month_day_year' }}</em>
+    </time> 
+      <p>    {{ article.content | strip_html | truncatewords: 30 }} </p>
+    <a href="{{ article.url }}">read more</a>
+    </div>
+      <div class="clr"></div>   
+    </li>
+    {% endfor %}
+      </ul></div>
