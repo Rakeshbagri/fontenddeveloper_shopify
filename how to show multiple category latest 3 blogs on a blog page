@@ -1,0 +1,153 @@
+how to show multiple category latest 3 blogs on a blog page
+
+step 1 create template ex. blog.latest-blog.liquid
+step 2 create blog category and assign this template.
+step 3 create section latest-blog.liquid
+step 4 use this code in section 
+
+
+ {% for block in section.blocks %}
+     <div class="col-md-4 blog-latest-blog">
+         {% assign blog_block = block.settings.defaulthome_blogslider2 | downcase %}
+   {% assign blog = blogs[blog_block] %}
+   <h3> <a href="{{ block.settings.blog_title }}">{{ block.settings.blog_title }}</a> </h3>
+  {% for article in blog.articles limit:3 %} 
+   <div class="item">
+            <div class="blog-item"> 
+              <div class="main-blog-left">
+                <div class="image">
+                  <img src="{{ article.image.src | img_url: '1024x1024' }}" alt="{{ article.image.alt }}">
+                </div>
+              </div>
+              <div class="blog-content">
+                <h4>
+                  <a href="{{ article.url }}">
+                    {% if settings.enable_multilang %}
+                    <span class="lang1">{{ article.title | split: '|' | first  }}</span>
+                    <span class="lang2">{{ article.title | split: '|' | last }}</span>
+                    {% else %}
+                    {{ article.title | split: '|' | first }}
+                    {% endif %}
+                  </a>
+                </h4>
+                <div class="con">
+                  <div class="blog-author">
+                    Author - <span> {{ article.author }} </span>
+                  </div>
+                  <div class="blog-time">
+                    Date          -
+                    <span class="blog-day">{{ article.published_at | date: '%d' }}</span>
+                    <span class="blog-month">{{ article.published_at | date: '%b' }}</span>
+                    <span class="blog-year">, {{ article.published_at | date: '%Y' }}</span>
+                  </div>
+                  <div class="text"> {{ article.content | strip_html | truncatewords: 30 }} </div>
+                 
+                </div>
+              </div> <div class="clr"></div>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+         {% endfor %}
+         
+         
+         
+         
+         
+         ---------------------------------------
+         
+         use this code for setting and use setting 
+         
+         
+{% schema %}
+{
+"name": "latest blog",
+"max_blocks": 10,
+"settings": [
+{
+"id": "text-box",
+"type": "text",
+"label": "Heading",
+"default": "Title"
+}
+],
+"blocks": [
+{
+  "type": "select",
+  "name": "Add Blog",
+      "settings": [
+	  {
+        "type": "checkbox",
+        "id": "display_blog_date",
+        "label": "Show date ",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "display_blog_intro",
+        "label": "Show Intro",
+        "default": true
+      },
+
+      {
+        "type": "checkbox",
+        "id": "display_blog_author",
+        "label": "Show author",
+        "default": true
+      },
+
+      {
+        "type": "checkbox",
+        "id": "display_blog_view_all",
+        "label": "Show 'View all' button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "display_blog_readmore",
+        "label": "Show Read More",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "blog_readmore",
+        "label": "Button",
+        "default": "Read More"
+      },
+      {
+        "type": "blog",
+        "id": "defaulthome_blogslider2",
+        "label": "Blog"
+      },
+      {
+        "type": "text",
+        "id": "blog_title",
+        "label": "Heading",
+        "default": "Blog Posts"
+      }
+      ]
+}
+],
+"presets": [
+{
+        "name": "Home Blog posts",
+        "category": "Blog",
+        "blocks": [
+        { 
+        "type": "select"
+        },
+        {
+        "type": "select"
+        }
+        ]
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
