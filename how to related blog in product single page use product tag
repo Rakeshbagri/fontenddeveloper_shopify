@@ -1,0 +1,50 @@
+#how to related blog in product single page use product tag
+# how to show blog in product single page
+# how to show blog in product page diffrent difrerent blog in every product page use product tag
+
+
+ 
+      {% for tags3 in product.tags  %}
+    {%if tags3 contains 'blogs_'  %}
+    {% assign content2 = tags3 | split: '_' %}
+   {% assign aut_top1 = content2 %}
+ {%capture blog_category %}{% for link in linklists.all-blog-menu.links %}{{ link.url | split: '/blogs/' }}{% endfor %}{%endcapture%}
+  {% assign blog_handles = "food;beauty;lifestyle;news;real-results;fitness;" %}
+  {% assign blog_list = blog_handles | split: ';'%}
+  {% assign article_list = '' %}
+  {% for blog_handle in blog_list %}
+  {% for article in blogs[blog_handle].articles %}
+  {% capture article_list %}{{ article_list }}%%%{{ blog_handle }}@%{{ article.published_at }}{% endcapture %}
+  
+   {% for tag in article.tags %}
+  {% if tag contains 'blogs_' %}
+  {% assign content3 = tag | split: '_'  %}
+  {%if content3[1] == aut_top1[1]%}
+  <div id="item-{{ id_blog }}" class="item-start item col-md-12 col-sm-3 col-xs-3 {{article.tags | join: ' '}}">
+                <a href="{{ article.url }}">
+                <div class="image responsive-img">
+                  <img src="{{ article.image.src | img_url: '400x400' }}" alt="{{ article.image.alt }}">
+                </div>
+            </a>
+              <div class="blog-content{% if section.settings.home_blog_text_align == 'text_left' %} text-left{% endif %}{% if section.settings.home_blog_text_align == 'text_right' %} text-right{% endif %}{% if section.settings.home_blog_text_align == 'text_center' %} text-center{% endif %}">
+                <a href="{{ article.url }}">   
+                <h6>
+                      {% if settings.enable_multilang %}
+                      <span class="lang1">{{ article.title | truncatewords: 8, ""  }}</span>
+                      {% else %}
+                      {{ article.title | split: '|' | first }}
+                      {% endif %}
+                  </h6></a>
+                  <div class="date">   {{ article.created_at | date: "%B %d, %y" }} </div>
+                  <div class="content">     {{article.content | truncatewords: 15, '' | strip_html }}  </div>
+                {%include 'blog-author-all-page'%}
+                </div>
+          </div>  
+   {%endif%}
+  {%endif%}
+  {%endfor%}       
+  {% endfor %}
+  {% endfor %}
+       {% endif %}
+        {% endfor %}
+        
