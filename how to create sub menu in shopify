@@ -1,0 +1,14 @@
+#how to create sub menu in shopify 
+#how to create sub menu in shopify 1 level
+
+<ul class="menu corl-menu align_left clearfix">
+  {% for link in linklists.main-menu.links %}
+  <li class="level1 {% if link.active %} active {% endif %}"><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+<ul class="submenus">
+{% for sublink in linklists[link.handle].links %}
+<li class="level2"><a href="{{ sublink.url }}">{{ sublink.title | escape }}</a></li>
+{% endfor %}
+</ul>
+</li>
+  {% endfor %}
+</ul>
