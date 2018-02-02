@@ -1,0 +1,9 @@
+  <span class="back-btn custom-closing" onclick="goBack()"> <span class="ss-icon">␡</span>  </span>
+
+
+
+<script>
+function goBack() {
+    window.history.go(-1);
+}
+</script>
