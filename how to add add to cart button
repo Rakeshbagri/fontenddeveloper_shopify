@@ -1,0 +1,11 @@
+#how to add add to cart button in collection page
+#how to add add to cart button in quick view
+
+https://help.shopify.com/en/themes/customization/products/add-to-cart/replace-add-to-cart-button
+https://nerdbugs.com  (broklen theme)
+      
+                 <form method="post" action="/cart/add">
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+    
+  <input type="submit" value="Add to cart" class="btn" />
+</form> 
