@@ -1,0 +1,24 @@
+{% assign content = collection.description | split: '<div class="insta-URL"></div>' %}
+
+<div class="col-head">
+  <div class="container">
+  
+    <div class="collection-image">
+      <div class="img-squre">   {{ collection.image.src | collection_img_url: 'master' | img_tag: collection_title }} </div>
+    </div>
+    <div class="collection-description">
+      <h2>{{ collection.title }}</h2>  
+            <p>{{content[0]}}</p>     
+        <a target="_blank" href="https://www.instagram.com/{{content[1]}}/">
+            <div class="in-icons">  <i class="cs-font  clever-icon-instagram"></i> </div>
+  </a>    
+    </div>
+  </div>
+  </div>
+ 
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
