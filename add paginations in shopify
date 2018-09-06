@@ -1,0 +1,54 @@
+# create pagination.liquid and this code copy paste 
+#https://panspro.com/collections/all
+
+
+<ul class="list--inline pagination">
+  <li>
+    {% unless paginate.previous.is_link %}
+      <div class="btn btn--secondary btn--narrow btn--disabled">
+        {% include 'icon-arrow-left' %}
+        <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+      </div>
+    {% else %}
+      <a href="{{ paginate.previous.url }}" class="btn btn--secondary btn--narrow">
+        {% include 'icon-arrow-left' %}
+        <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+      </a>
+    {% endunless %}
+  </li>
+  
+ {% if paginate.pages > 1 %}
+
+      {% for part in paginate.parts %}
+      {% if part.is_link %}
+      <a href="{{ part.url }}" class="item link">{{ part.title }}</a>
+      {% else %}
+      {% if part.title == '&hellip;' %}
+      <span class="item dots">{{ part.title }}</span>
+      {% else %}
+          <span class="item current"> {{ part.title }}</span>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      
+{% endif %}
+ 
+  
+  
+  <li>
+    {% unless paginate.next.is_link %}
+      <div class="btn btn--secondary btn--narrow btn--disabled">
+        {% include 'icon-arrow-right' %}
+        <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+      </div>
+    {% else %}
+      <a href="{{ paginate.next.url }}" class="btn btn--secondary btn--narrow">
+        {% include 'icon-arrow-right' %}
+        <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+      </a>
+    {% endunless %}
+  </li>
+</ul>
+
+
+
