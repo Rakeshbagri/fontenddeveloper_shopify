@@ -1,0 +1,9 @@
+https://annsonlinecookery.com/account/register
+
+  $(document).on('click','._saClickSubmit', function(e){
+    $flag =   $('#agree').is(':checked');
+      if(!$flag){
+
+    alert('Please tick the box to agree you have read our terms and privacy policy.'); 
+}
+  });
