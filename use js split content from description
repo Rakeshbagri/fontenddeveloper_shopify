@@ -1,0 +1,14 @@
+# how to print tittle from all descriptions
+
+  var html = $('.product-single__description').html();
+    
+    if($.trim($(html).html())!='' ){
+      
+      var h1 = $('.product-single__description h1').html();
+      if(h1){
+        $('.product-single__title').html('' +h1+ '');  
+      }else{
+        $('.product-single__title').html('');  
+      } 
+    }
+    
