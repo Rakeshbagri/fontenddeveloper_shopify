@@ -1,4 +1,5 @@
 https://annsonlinecookery.com/account/register
+https://blue-seas-aquariums.myshopify.com/cart
 
   $(document).on('click','._saClickSubmit', function(e){
     $flag =   $('#agree').is(':checked');
