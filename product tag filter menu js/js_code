@@ -1,0 +1,58 @@
+#work in ajax data
+#work with ajaxify
+#close on body click
+
+
+
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(document).on('click','.caloy-list h6',function(){
+          //$(".caloy-list h6").click(function(){
+          if($(this).parent().find(".fil-list").hasClass("show")){
+            $(this).parent().find(".fil-list").removeClass("show")
+            $(".caloy-list").removeClass("active");
+          }else{
+            $(".fil-list").removeClass("show");
+            $(".caloy-list").removeClass("active");
+            $(this).parent().find(".fil-list").addClass("show");
+            $(this).parent().addClass("active")
+          }
+          //});
+        });
+
+        $(document).on("click", function(event){
+          var $trigger = $(".caloy-list");
+          if($trigger !== event.target && !$trigger.has(event.target).length){
+            $(".fil-list").removeClass("show");
+            $(".caloy-list").removeClass("active");
+          }            
+        });
+
+
+      });
+
+      $(document).ready(function(){
+        $(document).on('click','.filters-toolbar__label',function(){
+          $(".main-left").toggleClass("open");
+        });
+      });
+      $(document).on("click", function(event){
+        var $trigger = $(".filters-toolbar");
+        if($trigger !== event.target && !$trigger.has(event.target).length){
+          $(".main-left").removeClass("open");
+        }            
+      });
+      $(document).ready(function(){
+        $(document).on('click','.goal-itemasasf ',function(){
+
+          $(".goal-itemasasf").removeClass("goal-tag");
+          $(this).addClass("goal-tag");
+        });
+      });
+      $(document).ready(function(){
+        $(document).on('click','.nav-2-close',function(){
+          $(".main-left").removeClass("open");
+        });
+      });  
+    </script> 
