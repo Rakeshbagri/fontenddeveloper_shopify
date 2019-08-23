@@ -1,0 +1,50 @@
+<div class="filters-toolbar__item-wrapper">
+              {% if section.settings.tags_enable and is_vendor_or_type_collection == false %}
+                {% unless collection.all_tags.size == 0 %}
+                  <div class="filters-toolbar__item-child">
+                    <label class="filters-toolbar__label select-label" for="FilterTags">
+                      {{ 'collections.filters.title_tags' | t }}</label>
+                    <div class="main-left">
+                          <span class="nav-2-close"> <i class="fal fa-times"></i> </span>
+                    {% for tag in collection.all_tags %}
+                      {% if tag contains '_' %}
+                      	{% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}{{ tag | split: '_' | first }}{% endcapture %}
+                      {% endif %}
+                    {% endfor %}
+                    {% assign cat_array = categories | split: '|' | uniq %}
+
+                   {%assign filterorder = cat_array %} 
+                    {% for cat_item in filterorder %}    
+                      
+                       {% assign classNams = "" %}	
+                        {% for tag in collection.all_tags %}
+                        {% assign cat = tag | split: '_' | first %}
+                          {% if cat != tag and cat_item == cat %}                       
+                            {% if current_tags contains tag %}
+                             {% assign classNams = "activedd" %}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                      
+                      <div class="advanced-filters caloy-list grid-item {{cat_item}} {{ classNams  }}">
+                       <h6>{{cat_item}} <i class="fal fa-angle-down"></i>   </h6>
+                       <ul class="fil-list">
+                      <div>  {% for tag in collection.all_tags %}
+                        {% assign cat = tag | split: '_' | first %}
+                          {% if cat != tag and cat_item == cat %}                       
+                            {% if current_tags contains tag %}
+                            	<li class="advanced-filter calory-option active-filter {{ tag | handle }}"data-group="{{ cat_item }}" data-handle="{{ tag | handle }}"><a href="{{tag | handle}}">{{tag | remove_first: cat_item | remove_first: '_'}} </a></li>
+                            {% else %}
+                             	<li class="advanced-filter calory-option {{ tag | handle }}"data-group="{{ cat_item }}" data-handle="{{ tag | handle }}"><a href="{{tag | handle}}">{{tag | remove_first: cat_item | remove_first: '_'}}</a></li>
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                         <span class="result-clr btn reset-filter"> CLEAR </span>
+                         </div>  </ul>
+                    </div>
+                    {% endfor %}   
+                    </div>
+                  </div>
+                {% endunless %}
+              {% endif %}
+            </div>
