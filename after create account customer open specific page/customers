@@ -1,0 +1,152 @@
+ 
+              {%- assign formId = 'RegisterForm' -%}
+              {% form 'create_customer', id: formId, novalidate: 'novalidate' %}
+              
+           <input type="radio" class="redirect-radio" name="redirect" value="{{block.settings.url_text}}" />
+         <h5> link 1 </h5>
+         
+         <input type="radio" class="redirect-radio" name="redirect" value="{{block.settings.url_text}}" />
+         <h5> link 2 </h5>
+              
+              
+              {% include 'form-status', form_id: formId %}
+              <div class="input-sahde">
+                <label>First Name </label>
+                <input type="text" class="input-type" name="customer[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name">
+              </div>
+              <div class="input-sahde">
+                <label> Last Name </label>
+                <input class="input-type" type="text" name="customer[last_name]" id="{{ formId }}-LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name">
+              </div>
+              <div class="input-sahde">
+              <label> Email </label>
+              <input type="email" name="customer[email]" id="{{ formId }}-email" class="input-type {% if form.errors contains 'email' %} input--error{% endif %}"  {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off"
+                     autocapitalize="off" autocomplete="email" aria-required="true" {%- if form.errors contains 'email' -%} class="input--error" aria-invalid="true" aria-describedby="{{ formId }}-email-error" {%- endif -%}>
+              {%- if form.errors contains 'email' -%}
+              <span id="{{ formId }}-email-error" class="input-error-message">{% include 'icon-error' %} {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+              {%- endif -%}
+                
+              </div>
+
+              <div class="input-sahde">
+              <label> {{ 'customer.register.password' | t }} </label>
+                
+              <input type='hidden' name='customer[tags]' id='add-value' value='' />
+              
+              <input placeholder=" " type="password" name="customer[password]" id="{{ formId }}-password" 
+                     class="input-type {% if form.errors contains 'password' %} input--error{% endif %}" aria-required="true" {%- if form.errors contains 'password' -%}
+                     class="input--error" aria-invalid="true" aria-describedby="{{ formId }}-password-error" {%- endif -%}>
+              {%- if form.errors contains 'password' -%}
+              <span id="{{ formId}}-password-error" class="input-error-message">{% include 'icon-error' %} {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.</span>
+              {%- endif -%}
+                
+              </div>
+                
+              <div class="policytext11">
+                <span class="custom_check_two">
+                  <input type="checkbox" name="customer[agree]" id="agree" required="required" />
+                  <span class="checkmark_two"> <i class="far fa-check"></i> </span>
+                </span>
+                I have read and accept <a href="/pages/terms-of-service">the terms and privacy policy</a>
+              </div>
+              <div class="bottom"> 
+                <span class="sign-links">
+                  Already Registered? <a href="/account/login">SIGN IN</a>
+                </span>
+                <div class="btn-6 inn">  <input type="button" value="NEXT STEP" class="_saClickSubmit">   </div>   
+              </div>
+              {% endform %}
+
+
+
+
+<script>   
+   $(document).on('click','._saClickSubmit', function(e){
+     var $redirectPage = $("input[name='redirect']:checked").val();
+     console.log($redirectPage)
+      if($redirectPage){
+       $flag =   $('#agree').is(':checked');
+        if($flag){
+     	  $('body').addClass('_jsLoader1');
+          var $formData = new FormData($('#RegisterForm')[0]);
+          $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: 'https://app.upl.marketing/vt/vt_profileimg.php',
+            data: $formData,
+            processData: false, 
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+             var $data = JSON.parse(data);
+             if($data.data){
+              $('#add-value').val($data.data);  
+              $firstName = $('input[name="customer[first_name]"]').val();
+              $lastName  = $('input[name="customer[last_name]"]').val();
+              $email     = $('input[name="customer[email]"]').val();
+              $password  = $('input[name="customer[create_password]"]').val();
+//       		  $redirectPage +='first_name='+$firstName+'&last_name='+$lastName+'&email='+$email; 	
+              $.cookie("customersURL",$redirectPage,{path: '/'}); 
+			  //   window.location.href= $redirectPage;      
+              $('#RegisterForm').submit();
+             }else{
+                $('body').removeClass('_jsLoader1');
+                alert('Please try again letter.');
+             } 
+            },
+            error: function (e) {
+			   $('body').removeClass('_jsLoader1');
+           	   alert('Please try again letter.');
+            }
+          }); 
+        }else{
+               alert('you need to click on agree.'); 
+             }
+      }else{
+        alert('please select a plan');
+      }
+  });
+  
+//    defaultPackage();
+
+ 
+  $url = window.location.href.split('/').pop();
+   //alert($url);
+  if($url == 'register'){
+    $customer = '1';  
+    $.cookie("redirectToBuy",$customer,{path: '/collections/shop'});
+  }
+
+//    function readURL(input , id) {
+//      $img = 'https://vt-cs.s3.amazonaws.com/profile-image/defaultimg.png';
+//      if (input.files && input.files[0]) {
+//        if(input.files[0].size>2097152) {
+//          alert('File size is larger than 2MB!');
+//          $('#contactFormFileUpload'+id+' .contactFormFileUpload').val('');
+//          $('#contactFormFileUpload'+id+' img').attr('src',$img );
+//        }else{
+//          var fileType = input.files[0]["type"];
+//          var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+//          if ($.inArray(fileType, validImageTypes) < 0) {
+//            alert('Invalid Image');
+//            $('#contactFormFileUpload'+id+' .contactFormFileUpload').val('');
+//            $('#contactFormFileUpload'+id+' img').attr('src',$img ); 
+//          }else{
+//            var reader = new FileReader();
+//            reader.onload = function (e) {
+//              $('#contactFormFileUpload'+id+' img').attr('src',e.target.result); 
+//            };
+//            reader.readAsDataURL(input.files[0]);
+//          } 
+//        }  
+//      }else{
+//        $('#contactFormFileUpload'+id+' .contactFormFileUpload').val('');
+//        $('#contactFormFileUpload'+id+' img').attr('src',$img );
+//      }
+//    }
+</script>  
+
+
+
+
