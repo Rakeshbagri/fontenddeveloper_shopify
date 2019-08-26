@@ -1,0 +1,2 @@
+var domain = (location.host.match(/([^.]+)\.\w{2,3}(?:\.\w{2})?$/) || [])[1];
+$('body').addClass(domain);
