@@ -1,0 +1,12 @@
+#how to redirect home page to inner page according to domain name
+
+#create 2 home page 
+
+<script>
+ var href = window.location.href;
+console.log(href);
+if(href == "https://kiaahvi.in"){
+  window.location.href = href+'pages/kiaahvi';        
+}
+
+</script>
