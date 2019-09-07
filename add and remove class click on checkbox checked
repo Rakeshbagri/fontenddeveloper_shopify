@@ -1,0 +1,14 @@
+https://ownyourgoalsdavina.com/pages/setup
+
+ <div class="main_option">  
+   <div class="cutome_radio"> 
+ <input type="radio" name="fitness_level" value="Fitness_level_advanced" class="fitness_level form-control" />
+</div>
+</div>
+
+$("input[name='weight']").click(function(){
+         $('.main_option').removeClass("active_box"); 
+         $(this).parent().parent().addClass("active_box")
+      });
+      
+      
