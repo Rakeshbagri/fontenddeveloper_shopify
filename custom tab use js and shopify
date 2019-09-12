@@ -1,0 +1,32 @@
+# https://ownyourgoalsdavina.com/
+
+# use on click and on hover for tab update 
+
+<script>
+
+  $(document).on('click', '.tabs-cls',function(e){
+  	$('.tabs-cls').removeClass('active');
+    $('.tabs-div').removeClass('show');
+  	$(this).addClass('active');
+    $id = $(this).data('id');
+    $($id).addClass('show');
+  }); 
+</script>
+  
+  <ul class="tabs">
+            {% for block in section.blocks %}
+            <li>
+              <span class="tabs-cls {% if forloop.index == 3 %} active {% endif %}" data-id="#tab-{{ forloop.index }}"    >
+                 Tab shopify setting block se aayega data 
+              </span>
+            </li>
+            {% endfor %}
+          </ul>
+          
+          
+          
+            {% for block in section.blocks %}
+          <div id="tab-{{ forloop.index }}" class="_tabs tabs-div  {% if forloop.index == 2 %} show {% endif %}">
+              yha tab ka content aayega 
+          </div>
+          {% endfor %}
