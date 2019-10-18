@@ -1,79 +1,45 @@
-<a href=" " data-toggle="modal" onclick="playvideo();" data-target="#myModal1"> play button </a>
+# https://uideveloper.myshopify.com/?key=8077e79dbfc6b02ecc7a667f3893dc832af9479206bb34a8408b7a9e299e1867 
+
+# https://maskologist.com/collections/our-masks/products/rose-glowing-potion-facial-hydrogel-sheet-mask
+
+# auto play video in popup 
 
 
-<div class="model_prduct_tem" >
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" onclick="productVideo();" data-target="#myModal">play video</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
+    
+      <!-- Modal content-->
       <div class="modal-content">
-        <div class="responsive-video-popup "> 
-          <iframe id="youtube_iframe" width="450px" 
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+        <iframe id="youtube_iframe" width="450px" 
                    height="300px" frameborder="0" 
                    allow="autoplay; encrypted-media"
                    allowfullscreen=""></iframe>
         </div>
-         <button type="button" class="close" data-dismiss="modal"><span class="icon icon-x" aria-hidden="true"></span></button>
-      </div>  
+         
+      </div>
+      
     </div>
-  </div>  
-</div> 
+  </div>
 
-use product tag
-
+ 
+ 
 <script>
     function productVideo(){
-      {% for tag in product.tags %}
-      {% if tag contains 'youtube_'%}
-       {% assign words = tag | split: '_' %}
-       {% assign id = words[1] %}
-      var url =  "https://www.youtube.com/embed/{{id}}?rel=0";   
-       $('#youtube_iframe').attr('src',url);
-    	jQuery.noConflict();
-       $('#myModal').modal();
       
-      {% endif %}
-      {% if tag contains 'vimeo_'%}
-       {% assign words = tag | split: '_' %}
-       {% assign id = words[1] %}
-      var url =  "https://player.vimeo.com/video/{{id}}?rel=0";   
+      var url =  "https://www.youtube.com/embed/{{section.settings.videoid}}?autoplay=1";   
        $('#youtube_iframe').attr('src',url);
-    	jQuery.noConflict();
-       $('#myModal').modal();
-      
-      {% endif %}
-      {% endfor %}  
-    }
+    	
+   }
     $(document).on('click','.close',function(){
         $('#youtube_iframe').attr('src',"");
       }) 
        
-</script>
-
-
-
-
-
-
-
-
-<script>
-  // function for introduction video on home page  
-  function playvideo(){
-    {% assign words = product.handle %}
-  	 var ty = "{{words}}";
-	 if (ty == "lavender-youth-miracle-facial-hydrogel-sheet-mask") {
-     var url="{{section.settings.url-video}}?rel=0";
-	 } 
-    
-    else {
-    var url="{{section.settings.url-video-rose}}?rel=0";
-
-	}	
-    $('#youtube_iframee').attr('src',url);
-    jQuery.noConflict();
-    $('#myModal1').modal();
-  }
-
-  $(document).on('click','.close',function(){
-    $('#youtube_iframee').attr('src',"");
-  })              
 </script>
