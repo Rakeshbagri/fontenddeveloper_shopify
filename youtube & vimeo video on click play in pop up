@@ -1,0 +1,79 @@
+<a href=" " data-toggle="modal" onclick="playvideo();" data-target="#myModal1"> play button </a>
+
+
+<div class="model_prduct_tem" >
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="responsive-video-popup "> 
+          <iframe id="youtube_iframe" width="450px" 
+                   height="300px" frameborder="0" 
+                   allow="autoplay; encrypted-media"
+                   allowfullscreen=""></iframe>
+        </div>
+         <button type="button" class="close" data-dismiss="modal"><span class="icon icon-x" aria-hidden="true"></span></button>
+      </div>  
+    </div>
+  </div>  
+</div> 
+
+use product tag
+
+<script>
+    function productVideo(){
+      {% for tag in product.tags %}
+      {% if tag contains 'youtube_'%}
+       {% assign words = tag | split: '_' %}
+       {% assign id = words[1] %}
+      var url =  "https://www.youtube.com/embed/{{id}}?rel=0";   
+       $('#youtube_iframe').attr('src',url);
+    	jQuery.noConflict();
+       $('#myModal').modal();
+      
+      {% endif %}
+      {% if tag contains 'vimeo_'%}
+       {% assign words = tag | split: '_' %}
+       {% assign id = words[1] %}
+      var url =  "https://player.vimeo.com/video/{{id}}?rel=0";   
+       $('#youtube_iframe').attr('src',url);
+    	jQuery.noConflict();
+       $('#myModal').modal();
+      
+      {% endif %}
+      {% endfor %}  
+    }
+    $(document).on('click','.close',function(){
+        $('#youtube_iframe').attr('src',"");
+      }) 
+       
+</script>
+
+
+
+
+
+
+
+
+<script>
+  // function for introduction video on home page  
+  function playvideo(){
+    {% assign words = product.handle %}
+  	 var ty = "{{words}}";
+	 if (ty == "lavender-youth-miracle-facial-hydrogel-sheet-mask") {
+     var url="{{section.settings.url-video}}?rel=0";
+	 } 
+    
+    else {
+    var url="{{section.settings.url-video-rose}}?rel=0";
+
+	}	
+    $('#youtube_iframee').attr('src',url);
+    jQuery.noConflict();
+    $('#myModal1').modal();
+  }
+
+  $(document).on('click','.close',function(){
+    $('#youtube_iframee').attr('src',"");
+  })              
+</script>
