@@ -1,0 +1,320 @@
+# https://clickinfluence.myshopify.com/pages/pricing
+
+<html>
+<head>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+
+</head>
+<body>
+	
+	<div id="shopify-section-Pricing-Table-image-text" class="shopify-section title-boxes instructions">
+
+<div class="row">
+  <div class="section-header col-sm-12 text-center">
+    <div class="max-700">
+      
+      <span class="sub-heading-above">Take your business to the next level</span>
+      
+      <h3 class="block-tittle">Choose your budget</h3>
+      <p></p><p>We work based on your budget, not what 'we think you can afford' like most marketing companies do. Choose the budget that would best suit you, then you can see which plan you will be on.</p>
+<p></p>
+<p>Or just play around with the slider, it's actually quite fun...</p><p></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container center">
+  <form>
+    <div class="range">
+      <div class="range-in">          
+        <input type="range" id="points" name="foo" value="500" step="100" min="500" max="10000" style="width:600px;">
+        <output for="range" class="output">£2000</output>
+      </div>
+    </div>
+  </form>  
+  <script>
+
+  </script>
+
+
+  <div class="row pricing-tab">
+    
+    <div class="col-xs-12 col-sm-12 col-xl-3 selecttoshow color-1">    
+      <div class="block shjie" data-id="child-f-1">        
+        
+        <h5 class="h4f"> starter </h5> 
+        
+
+        <div class="outer-div-block"> 
+           <div class="head-color"> campaigns</div>    
+           <div>  1</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> ad sets</div>    
+           <div>  2</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> adverts</div>    
+           <div>  1</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> Channels</div>    
+           <div>  1</div>      
+        </div>
+        
+        <div class="single-text-box"> 1 Landing page</div>        
+         
+        
+        <div class="single-text-box"> 1 report</div>        
+         
+        
+        <div class="single-text-box"> 48 hours email support</div>        
+         
+         
+         
+         
+         
+         
+        <a class="btn show-when-highlit" aria-describedby="a11y-external-message" style="display: none;"> select</a>
+      </div>
+
+
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-xl-3 selecttoshow color-2 highlight">    
+      <div class="block shjie" data-id="child-f-2">        
+        
+        <h5 class="h4f"> basic </h5> 
+        
+
+        <div class="outer-div-block"> 
+           <div class="head-color"> campaigns</div>    
+           <div>  1</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> ad sets</div>    
+           <div>  up to 4</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> adverts</div>    
+           <div>  up to 8</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> Channels</div>    
+           <div>  1</div>      
+        </div>
+        
+        <div class="single-text-box"> 1 intermediate landing page</div>        
+         
+        
+        <div class="single-text-box"> 1 report</div>        
+         
+        
+        <div class="single-text-box"> Dedicated Account Manager</div>        
+         
+        
+        <div class="single-text-box"> 24 hours email support</div>        
+         
+         
+         
+         
+         
+        <a class="btn show-when-highlit" aria-describedby="a11y-external-message" style="display: block;"> select</a>
+      </div>
+
+
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-xl-3 selecttoshow color-3">    
+      <div class="block shjie" data-id="child-f-3">        
+        
+        <h5 class="h4f"> premium </h5> 
+        
+
+        <div class="outer-div-block"> 
+           <div class="head-color"> campaigns</div>    
+           <div>  up to 2</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> ad sets</div>    
+           <div>  up to 10</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> adverts</div>    
+           <div>  up to 30</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> Channels</div>    
+           <div>  up to 2</div>      
+        </div>
+        
+        <div class="single-text-box"> 1 advanced landing page</div>        
+         
+        
+        <div class="single-text-box"> 1 report</div>        
+         
+        
+        <div class="single-text-box"> 1 email automation</div>        
+         
+        
+        <div class="single-text-box"> Dedicated Account Manager</div>        
+         
+        
+        <div class="single-text-box"> Dedicated phone support</div>        
+         
+         
+         
+         
+        <a class="btn show-when-highlit" aria-describedby="a11y-external-message" style="display: none;"> select</a>
+      </div>
+
+
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-xl-3 selecttoshow color-4">    
+      <div class="block shjie" data-id="child-f-4">        
+        
+        <h5 class="h4f"> ultimate </h5> 
+        
+
+        <div class="outer-div-block"> 
+           <div class="head-color"> campaigns</div>    
+           <div>  up to 3</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> ad sets</div>    
+           <div>  up to 15</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> adverts</div>    
+           <div>  up to 45</div>      
+        </div>
+        <div class="outer-div-block"> 
+           <div class="head-color"> Channels</div>    
+           <div>  up to 3</div>      
+        </div>
+        
+        <div class="single-text-box"> 1 pro landing page</div>        
+         
+        
+        <div class="single-text-box"> 1 report</div>        
+         
+        
+        <div class="single-text-box"> 2 email automation</div>        
+         
+        
+        <div class="single-text-box"> Dedicated Account Manager</div>        
+         
+        
+        <div class="single-text-box"> Weekly Meetings</div>        
+         
+        
+        <div class="single-text-box"> Dedicated phone support</div>        
+         
+         
+         
+        <a class="btn show-when-highlit" aria-describedby="a11y-external-message" style="display: none;"> select</a>
+      </div>
+
+
+    </div>
+    
+  </div>
+
+  <div class="clr"></div>
+
+  <div class="row znvdl">
+    <script src="//www.powr.io/powr.js?external-type=html"></script> 
+    <div class="col-sm-12">
+      <div id="child-f-1" class="form-1 comncls" style="display: none;">
+        <div class="contact-form bg-form form-vertical">
+          <div class="powr-form-builder powrLoaded" id="fda900db_1539171077"><iframe src="https://www.powr.io/form-builder/u/fda900db_1539171077#platform=html" powrindex="0" style="transition: height 0.3s ease 0s; height: 0px; display: block; visibility: visible; position: unset; z-index: unset; inset: auto; transform: none; transform-origin: unset; width: 100%;" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="100%" height="0px" frameborder="0"></iframe></div>
+        </div>
+      </div>
+      <div id="child-f-2" class="form-2 comncls" style="display: none;">
+        <div class="contact-form bg-form form-vertical">
+          <div class="powr-form-builder powrLoaded" id="b85ffa1a_1539171648"><iframe src="https://www.powr.io/form-builder/u/b85ffa1a_1539171648#platform=html" powrindex="1" style="transition: height 0.3s ease 0s; height: 0px; display: block; visibility: visible; position: unset; z-index: unset; inset: auto; transform: none; transform-origin: unset; width: 100%;" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="100%" height="0px" frameborder="0"></iframe></div>
+        </div>
+      </div>
+      <div id="child-f-3" class="form-3 comncls" style="display: none;">
+        <div class="contact-form bg-form form-vertical"> 
+          <div class="powr-form-builder powrLoaded" id="5d8b1cda_1539176098"><iframe src="https://www.powr.io/form-builder/u/5d8b1cda_1539176098#platform=html" powrindex="2" style="transition: height 0.3s ease 0s; height: 0px; display: block; visibility: visible; position: unset; z-index: unset; inset: auto; transform: none; transform-origin: unset; width: 100%;" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="100%" height="0px" frameborder="0"></iframe></div>
+        </div>
+      </div>
+      <div id="child-f-4" class="form-4 comncls" style="display: none;">
+        <div class="contact-form bg-form form-vertical">  
+          <div class="powr-form-builder powrLoaded" id="fa80b99d_1539176101"><iframe src="https://www.powr.io/form-builder/u/fa80b99d_1539176101#platform=html" powrindex="3" style="transition: height 0.3s ease 0s; height: 0px; display: block; visibility: visible; position: unset; z-index: unset; inset: auto; transform: none; transform-origin: unset; width: 100%;" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="100%" height="0px" frameborder="0"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> 
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('.color-1').addClass( "highlight");
+  $('.form-1').hide();
+  $('.form-2').hide();
+  $('.form-3').hide();
+  $('.form-4').hide();
+  $('#points').on("input", function() {
+    $('.range-icon span').hide();
+    var thiss = $(this).val();
+    $('.output').val("£" + thiss);
+    if(thiss == 10000)
+    {
+      $('.output').val("£" + thiss + "+");
+    }
+    $('#child-f-1').hide();
+    $( '.shjie .btn' ).hide();
+    if((thiss > 499) && (thiss <= 999)){ 
+     
+      $('.color-1').addClass( "highlight" );
+    }
+    else{      
+      $('.color-1').removeClass( "highlight" );
+    }
+    if((thiss > 999) && (thiss <= 2499)){ 
+    
+      $('.color-2').addClass( "highlight" );
+    }
+    else{      
+      $('.color-2').removeClass( "highlight" );
+    }
+    if((thiss > 2499) && (thiss <= 9999)){ 
+     
+      $('.color-3').addClass( "highlight" );
+    }
+    else{      
+      $('.color-3').removeClass( "highlight" );
+    }
+    if((thiss > 9999) && (thiss <= 10000)){ 
+     
+      $('.color-4').addClass( "highlight" );
+    }
+    else{      
+      $('.color-4').removeClass( "highlight" );
+    }
+    $('.highlight').find('.shjie').find('.btn').show();
+    $('.comncls').hide();
+  }).trigger("change");
+
+  $('.show-when-highlit').click(function(){
+    $('.comncls').hide();
+    var ad =  $(this).parent().attr("data-id");
+    $('#'+ad).show();
+  });
+    
+    });
+</script> </div>
+
+</body>
+
+</html>
