@@ -1,0 +1,7 @@
+
+            <form method="post" action="/cart/add">
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+     <input type="hidden" name="return_to" value="/checkout/" />
+
+  <input type="submit" value="BUY IT NOW" class="add-btns" />
+</form> 
