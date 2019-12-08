@@ -1,0 +1,83 @@
+            {%- assign product = all_products[section.settings.featured_product-1] -%}        
+            {%- assign collection_handles = product.collections | map: 'handle' -%}
+            {% if product.empty? %}
+            {%- assign section_onboarding = true -%}
+            {% else %}
+            {%- assign section_onboarding = false -%}
+            {% endif %}
+            <div itemprop="itemListElement" itemscope itemtype="http://schema.org/Product"
+                 class="product-{{ product.id }} "
+                 data-slideshow-animation="{{section.settings.slideshow_animation}}"
+                 data-block-id="{{block.id}}"
+                 {{ block.shopify_attributes }}>
+
+
+
+              <div class="product-details half">
+
+                <form class="product__form" id="product{{ product.id }}__form" action="/cart/add" method="POST">
+                  <div class="product__variants">
+                    {% if product.variants.size > 1 %}
+                    <div class="form__control">
+                      <div class="styled-select">
+                        <select id="product-select-{{ product.id }}" name="id">
+                          {% for variant in product.variants %}
+                          <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    {% else %}
+                    <input type="hidden" name="id" data-sku="{{ product.selected_or_first_available_variant.sku }}" value="{{ product.selected_or_first_available_variant.id }}">
+                    {% endif %}
+                  </div>
+
+                  <div class="product__buy">
+                  <div class="quantity-wrapper clearfix">
+                         <div class="wrapper">
+                          <span class="qty-down btooltip" data-toggle="tooltip" data-placement="top" title="Decrease" data-src="#quantity">
+                            <i class="fa fa-minus"></i>
+                          </span>
+                          <input id="quantity" type="text" name="quantity" value="1" maxlength="5" size="5" class="item-quantity" />
+                          <span class="qty-up btooltip" data-toggle="tooltip" data-placement="top" title="Increase" data-src="#quantity">
+                            <i class="fa fa-plus"></i>
+                          </span>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="landing-addtocart-btn">
+            {% if product.selected_or_first_available_variant.available %}
+                    <button type="submit" class="addtocart-btn pop-1" {% if settings.cart_page != 'page' %}data-action="add-to-cart"{% endif %}> Add to Cart<span>>></span> </button>
+                    {% else %}
+                    <button type="submit" class="addtocart-btn" disabled="disabled">Sould out</button>
+                    {% endif %}
+                    </div>
+                    
+                    
+                  </div>
+                </form>
+              </div>
+
+            </div>
+
+ <!-- add to cart -->
+
+{% schema %}
+  {
+    "name": "Landing product",
+    "settings": [
+{
+"type": "product",
+"id": "featured_product-1",
+"label": "Choose Product here"
+}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
