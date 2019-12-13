@@ -1,2 +1,30 @@
 var domain = (location.host.match(/([^.]+)\.\w{2,3}(?:\.\w{2})?$/) || [])[1];
 $('body').addClass(domain);
+
+
+
+    <script>
+ 
+      
+      var domain = document.location.origin;
+
+ 
+        console.log(domain);
+        
+        if(domain == "https://contraband-sports.myshopify.com") {
+          
+          document.write('<sc'+'ript async src="https://www.googletagmanager.com/gtag/js?id=UA-150372403-2"></scrip'++'t>');
+          
+            window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150372403-2');
+          
+        }else{
+        
+        }
+ 
+   
+      
+  </script>
