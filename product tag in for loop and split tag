@@ -4,3 +4,7 @@
           {{ sfr[1] }}
           {%endif%}
           {% endfor%}
+
+**********************
+
+{% for tag in product.tags %} {{ tag | handle }} {% endfor %}
