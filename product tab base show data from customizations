@@ -1,0 +1,110 @@
+# https://flairchocolatier.com/collections/chocolate-bars/products/tokyo
+
+<div class="nutritions-info">
+            {% assign difficulty_1 = settings.difficulty_1 %}
+            {% assign difficulty_2 = settings.difficulty_2 %}
+            {% assign difficulty_3 = settings.difficulty_3 %}
+            {% assign difficulty_4 = settings.difficulty_4 %}
+            {% assign difficulty_5 = settings.difficulty_5 %}
+            {% assign difficulty_6 = settings.difficulty_6 %}
+                        {% assign difficulty_7 = settings.difficulty_7 %}
+                        {% assign difficulty_8 = settings.difficulty_8 %}
+           
+<h5> Nutrition information </h5>
+            {%for tags in product.tags%}
+            {% if tags contains 'nutrition_' %}
+            {% assign sfrs = tags %}
+ 
+ 
+            {%if sfrs == difficulty_1 %}
+            {% if settings.difficulty_1_text != blank %}
+
+            <button class="tablinks" data-tab="tab-1" onclick="openCity(event, 'tab-1')">   {{settings.difficulty_1_textarea}}</button>
+
+            <div id="tab-1" class="tabcontent" data-status="hide">
+
+
+              {{settings.difficulty_1_text}}
+
+
+            </div>
+            {%endif%}
+            {%endif%}
+
+            {%if sfrs == difficulty_2 %}
+            {% if settings.difficulty_2_text != blank %}          
+            <button class="tablinks" data-tab="tab-2"   onclick="openCity(event, 'tab-2')"> {{settings.difficulty_2_textarea}}</button>
+            <div id="tab-2" class="tabcontent" data-status="hide" >
+
+
+              {{settings.difficulty_2_text}}
+
+
+            </div>
+            {%endif%}
+            {%endif%}
+            
+            
+            {%if sfrs == difficulty_3 %}
+            {% if settings.difficulty_3_text != blank %}          
+            <button class="tablinks" data-tab="tab-3" onclick="openCity(event, 'tab-3')"> {{settings.difficulty_3_textarea}}</button>
+            <div id="tab-3" class="tabcontent" data-status="hide">
+              {{settings.difficulty_3_text}}
+            </div>
+            {%endif%}
+            {%endif%}
+
+                        {%if sfrs == difficulty_4 %}
+            {% if settings.difficulty_4_text != blank %}          
+            <button class="tablinks" data-tab="tab-4" onclick="openCity(event, 'tab-4')"> {{settings.difficulty_4_textarea}}</button>
+            <div id="tab-4" class="tabcontent" data-status="hide">
+              {{settings.difficulty_4_text}}
+            </div>
+            {%endif%}
+            {%endif%}
+            
+                             {%if sfrs == difficulty_5 %}
+            {% if settings.difficulty_5_text != blank %}          
+            <button class="tablinks" data-tab="tab-5" onclick="openCity(event, 'tab-5')"> {{settings.difficulty_5_textarea}}</button>
+            <div id="tab-5" class="tabcontent" data-status="hide">
+              {{settings.difficulty_5_text}}
+            </div>
+            {%endif%}
+            {%endif%}
+            
+            
+            {%if sfrs == difficulty_6 %}
+            {% if settings.difficulty_6_text != blank %}          
+            <button class="tablinks" data-tab="tab-6" onclick="openCity(event, 'tab-6')"> {{settings.difficulty_6_textarea}}</button>
+            <div id="tab-6" class="tabcontent" data-status="hide">
+              {{settings.difficulty_6_text}}
+            </div>
+            {%endif%}
+            {%endif%}
+
+         {%if sfrs == difficulty_7 %}
+            {% if settings.difficulty_7_text != blank %}          
+            <button class="tablinks" data-tab="tab-7" onclick="openCity(event, 'tab-7')"> {{settings.difficulty_7_textarea}}</button>
+            <div id="tab-7" class="tabcontent" data-status="hide">
+              {{settings.difficulty_7_text}}
+            </div>
+            {%endif%}
+            {%endif%}
+
+            
+             {%if sfrs == difficulty_8 %}
+            {% if settings.difficulty_8_text != blank %}          
+              <button class="tablinks" data-tab="tab-8" onclick="openCity(event, 'tab-8')"> {{settings.difficulty_8_textarea}}</button>
+              <div id="tab-8" class="tabcontent" data-status="hide">
+              {{settings.difficulty_8_text}}
+              </div>
+            {%endif%}
+            {%endif%}
+
+            
+
+            {%endif%}
+            {%endfor%}
+
+
+          </div>
