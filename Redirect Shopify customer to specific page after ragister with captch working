@@ -1,0 +1,26 @@
+#Redirect Shopify customer to specific page after ragister with captch working
+
+
+Add in register form
+
+{% form 'create_customer' %}
+                
+<input type="hidden" name="return_to" value="/collections/all">
+
+add in footer 
+
+<script>
+  
+  $(document).ready(function(){
+
+     if($('#g-recaptcha').length){//if captcha
+    
+      var $newInput = $('<input type="hidden" name="return_to" value="/collections/all" />');
+      $newInput.insertBefore($('.shopify-challenge__container input[type="submit"]'));
+
+     }
+});
+
+  
+</script>
+  
