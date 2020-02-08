@@ -1,0 +1,10 @@
+$(document).ready( function() {
+  $('a[href^="/account/logout"]').on("click", function() {
+    $.ajax( $(this).attr('href') )
+      .done(function() {
+        // Here you will change the url to whatever page you want to redirect to
+        window.location.href = "/pages/my-shopify-page";
+      });
+    return false;
+  });
+});
