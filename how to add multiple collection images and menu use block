@@ -1,0 +1,181 @@
+
+{% for block in section.blocks %}
+  {%- assign multi_collection =  block.settings.multi_collection -%}
+  {%- assign nested_link = block.img -%}
+	{% if collection.handle contains multi_collection %}
+		
+<div class="m-colljj">   <img src="{{ block.settings.img | img_url : '800x' }}"> </div>
+
+	{% endif %}
+{% endfor %}
+
+  
+  
+  
+  "blocks": [
+      {
+        "type": "collection",
+        "name": "Multi Collection image",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "multi_collection",
+            "label": "Collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Collection images"
+     
+          }
+        ]
+      }
+    ],
+"presets": [
+      {
+        "name": "Multi Collection image",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+
+
+---------------------------------------------------------------------------------************************
+
+   <div class="container">
+     
+          
+       
+ 
+
+     <div class="clearfix breadcrumb-collection">
+     
+        <div class="eight columns breadcrumb_text medium-down--one-whole" itemscope itemtype="http://schema.org/BreadcrumbList">
+          <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a><meta itemprop="position" content="1" /></span>
+          <span class="breadcrumb-divider">/</span>
+          <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}" title="{{ collection.title | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ collection.title }}</span></a><meta itemprop="position" content="2" /></span>
+          {% if current_tags %}
+            {% for tag in current_tags %}
+
+              {% unless tag contains 'meta-' %}
+                <span class="breadcrumb-divider">/</span>
+                <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}" title="{{ tag | escape }}" itemprop="item"><span itemprop="name">{{ tag }}</span></a><meta itemprop="position" content="{{ forloop.index | plus: 2 }}" /></span>
+              {% endunless %}
+            {% endfor %}
+          {% endif %}
+
+          {% if paginate.pages != 0 and settings.pagination_type != 'load_more' and settings.pagination_type != 'infinite_scroll' %}
+            <span class="breadcrumb-divider">/</span> {{ 'general.breadcrumbs.page' | t: current_page: paginate.current_page, pages: paginate.pages }}
+          {% endif %}
+        </div>
+   
+    </div>
+     
+     <div class="coll-top">
+
+               <h1 class="c-headline">{{ collection.title }}</h1>
+
+
+{% for block in section.blocks %}
+  {%- assign multi_collection =  block.settings.multi_collection -%}
+  {%- assign nested_link = block.img -%}
+	{% if collection.handle contains multi_collection %}
+		
+     {% assign sidebar_menu = linklists[block.settings.custom_menu] %}
+             
+              
+              <ul class="coll-menu">
+                {% for link in sidebar_menu.links %}
+                  {% if link.active %}
+                    {% assign active_link = true %}
+                  {% else %}
+                    {% assign active_link = false %}
+                    {% for sub_link in linklists[link.handle].links %}
+                      {% if sub_link.active %}
+                        {% assign active_link = true %}
+                      {% else %}
+                        {% for sub_sub_link in linklists[sub_link.handle].links %}
+                          {% if sub_sub_link.active %}
+                            {% assign active_link = true %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+
+                  <li>
+                    {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
+                     <a data-no-instant href="{{ link.url }}" class="{% if link.active %}active{% endif %} parent-link--false">
+                        {{ link.title }}
+                      </a>
+                    {% else %}
+                     <a data-no-instant href="{{ link.url }}" class="{% if link.active %}active{% endif %} parent-link--true">
+                       {{ link.title }}
+                     </a>
+                    {% endif %}
+
+                    
+                  </li>
+                {% endfor %}
+              </ul>
+
+	{% endif %}
+{% endfor %}
+
+</div>
+</div>
+  
+
+
+
+
+{% schema %}
+  {
+    "name": "Collection navigation",
+    "settings": [
+
+],
+
+  "blocks": [
+      {
+        "type": "collection",
+        "name": "Multi Collection image",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "multi_collection",
+            "label": "Collection"
+          },
+          {
+          "type": "link_list",
+          "id": "custom_menu",
+          "label": "Menu"
+        }
+        ]
+      }
+    ],
+"presets": [
+      {
+        "name": "Multi Collection image",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
