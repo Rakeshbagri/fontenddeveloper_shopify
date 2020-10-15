@@ -7,10 +7,8 @@ if (console && console.log) {
 window.lazySizesConfig = window.lazySizesConfig || {};
 lazySizesConfig.expFactor = 4;
 
-
 (function($){
   var $ = jQuery = $;
-
 
   theme.utils = {
     /**
@@ -1193,7 +1191,7 @@ lazySizesConfig.expFactor = 4;
   
         $('body').on('added.ajaxProduct', function() {
           theme.cart.getCart().then(function(cart) {
-            this.buildCart(cart, false);
+            this.buildCart(cart, true);
           }.bind(this));
         }.bind(this));
       },
@@ -1205,7 +1203,6 @@ lazySizesConfig.expFactor = 4;
         if (cart.item_count === 0) {
           $(selectors.container).append('<p class="appear-animation appear-delay-3">' + theme.strings.cartEmpty +'</p>');
         } else {
-          $('.nav-cart-count.cart-link__bubble').text(cart.item_count);
           var items = [];
           var item = {};
           var data = {};
@@ -6162,10 +6159,5 @@ lazySizesConfig.expFactor = 4;
     sections.register('photoswipe', theme.Photoswipe);
 
     theme.initSecondary();
-    
-    
   });
-  
-  
 })(theme.jQuery);
-
