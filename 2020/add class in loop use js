@@ -1,3 +1,17 @@
 #repeat class in loop
 #every second class add on next div in loop
+https://iamlovd.com/
+<script type="text/javascript">
 
+          var count = -1;
+function AddRedClass() {
+  var boxes = $('.box');
+  var boxLength = boxes.length - 1;
+  //Check if the actual item isn't more than the length then add 1 otherway restart to 0
+  count < boxLength ? count++ : count=0;
+  //Remove the class and add it to the new target
+  boxes.removeClass('red').eq(count).addClass('red');
+}
+setInterval(AddRedClass, 1000);
+          
+    </script>
