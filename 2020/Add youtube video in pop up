@@ -1,0 +1,31 @@
+  {%if block.settings.video_url != blank%}
+        <div class="window_content play-btn">
+          <span data-src="https://www.youtube.com/embed/{{ block.settings.video_url }}?autoplay=1&mute=0"></span>
+        </div>
+        {%endif%}
+
+
+<div id="myModal" class="modal" style"display:none;">
+  <div class="js-modal-content modal-content">
+    <span class="close">X</span>
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
+
+<script>
+ $(document).ready(function(){
+  $(document).on('click', '.close' , function(){
+    $('.js-modal-content').html('');
+    $("#myModal").css("display", "none");    
+  });
+
+  $(document).on('click', '.window_content' , function(){	
+    
+	var ifra = $(this).find('span').attr('data-src');
+     $('.js-modal-content').html('<div class="responsive-video-popup"><iframe src="'+ifra+'autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div> <span id="close1" class="close"></span>');
+	$(".close").css("display", "block");
+	$("#myModal").css("display", "flex");
+     
+  });  
+});
+</script>
