@@ -1,0 +1,18 @@
+#How to send value in input field on product page
+# gift card message send 
+https://cococino.com.au/products/cococino-gift-voucher
+
+{% for tag in  product.tags %}
+{% if tag == 'Gift Vouchers' %}
+
+
+
+<p class="line-item-property__field">
+  <label for="custom-text">Custom Text</label>
+  <input id="custom-text" type="text" name="properties[To]" required placeholder="To:">
+  <input id="custom-text" type="text" name="properties[From]" required placeholder="From:">
+  <textarea id="msg" name="properties[Gift Card Message]" rows="4" cols="50" placeholder="Gift Card Message:"></textarea>
+
+</p>
+{%endif%}
+{% endfor%}
