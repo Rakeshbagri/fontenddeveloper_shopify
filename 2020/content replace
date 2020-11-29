@@ -1,0 +1,20 @@
+         # how to html content in select replace use script 
+                
+https://www.cyborgsport.net/collections/all_products/products/collagen-pro
+
+                  <script type="text/javascript"> 
+                    $(document).on('change', '#SingleOptionSelector-product-template-option-0' ,function(e){
+                      $('#g1').text($(this).val());	
+                    });
+
+                    $(document).on('change', '#SingleOptionSelector-product-template-option-1' ,function(e){
+                      $('#g2').text($(this).val());	
+                    });
+
+                    $(document).on('change', '#Quantity' ,function(e){
+                      $('#g3').text($(this).val());	
+                    });
+
+                    
+
+                  </script>
