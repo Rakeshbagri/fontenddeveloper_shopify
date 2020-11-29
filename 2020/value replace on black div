@@ -1,0 +1,7 @@
+Value replace in other div 
+
+<script>
+  setTimeout(function (e) {
+	$('#col-var').text($('.single-option-radio__label--value.label-extra').text());
+   }, 1000);
+</script>
