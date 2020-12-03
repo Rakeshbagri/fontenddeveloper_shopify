@@ -1,0 +1,13 @@
+
+ {% assign div = price | money_without_currency %}
+  {% for tag in product.tags %}      
+ {% if tag contains 'carton:' %}
+          		
+ {% assign hn = tag | remove: "carton:" %}
+      
+
+  {{ product.price | divided_by: hn | money_without_trailing_zeros  }}
+
+        	{% endif %}
+          {% endfor %}
+ 
