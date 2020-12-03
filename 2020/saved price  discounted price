@@ -1,0 +1,24 @@
+# how to show save price in shopify
+
+
+     <span class="sale_price">
+              
+          {% capture saved_amount %}
+        {{ product.compare_at_price | minus: product.price | money  }}
+        {% endcapture %}
+              Save <span class="save_price"> {{ saved_amount }} </span>
+        </span>
+
+
+<script>
+
+$('.main_price').bind('DOMSubtreeModified', function(){
+         var num1 = $(".main_price").html();
+  		 var num1 = parseFloat(num1.trim().replace("$", "").replace(",", ""));
+  		 var num2 = $(".pro_price").html();
+  		 var num2 = parseFloat(num2.trim().replace("$", "").replace(",", ""));
+         var answer =   parseFloat(num2-num1).toFixed(2);
+         $('.save_price').html('$'+answer);
+});
+
+</script>
