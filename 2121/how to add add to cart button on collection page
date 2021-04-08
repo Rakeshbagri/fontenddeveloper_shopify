@@ -1,0 +1,26 @@
+<form action="/cart/add" method="post" style="text-align:center;">
+    {% if product.variants.size > 1 %}
+    
+  <select name="id">
+  {% for variant in product.variants %}
+    {% if variant.available  %}
+    <option value="{{ variant.id }}">{{ variant.title }}{% if  variant.inventory_quantity == 0 %}-Out of stock {%endif%}</option>
+    {% endif %}
+  {% endfor %}
+  </select>
+    {% endif %}
+   <label for="quantity">Qty: </label>
+<input min="1" type="number" id="quantity" name="quantity" value="1" />
+<div id="variant-inventory">
+{% if product.variants.first.inventory_management == "shopify" and product.variants.first.inventory_quantity > 0 %}
+We currently have {{ product.variants.first.inventory_quantity }} in stock.
+{% endif %}
+</div>
+    {% if  variant.inventory_quantity > 0 %}
+ <button type="submit" name="add" id="AddToCart--{{ section.id }}" class="btn btn--add-to-cart{% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary-accent{% endif %}">
+   Add to cart
+    </button>
+   {%else%}
+    <input type="submit" value="Out of stock" />
+    {%endif%}
+    </form>
