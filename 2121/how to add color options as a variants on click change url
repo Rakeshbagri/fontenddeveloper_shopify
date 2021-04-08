@@ -1,0 +1,5 @@
+      {% for product in collections[section.settings.home_featured_products].products %}
+        <a href="{{ product.url | within: collection }}">
+          <img class="grid-product__image" src="{{ featured_image.src | img_url: '1024x' }}" alt="{{ featured_image.alt | escape }}">
+        </a>
+        {% endfor %}
