@@ -19,3 +19,11 @@
 
 
 </script>
+
+
+use these id left and right 
+
+<div id="sticky_right">   </div>
+
+<div id="content">   </div>
+ 
