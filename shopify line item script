@@ -1,0 +1,131 @@
+single script
+
+Discount 40% when customer tag is 'wholesale' and no minimum order value.
+
+Discount 40% when customer tag is 'wholesale-new' and a $400 minimum order value.
+
+ # ================================ Customizable Settings ================================
+# ================================================================
+# Tiered Discounts by Spend Threshold
+#
+# If the cart total is greater than (or equal to) an entered
+# threshold, the associated discount is applied to each item.
+#
+#   - 'threshold' is the spend amount needed to qualify
+#   - 'discount_type' is the type of discount to provide. Can be
+#     either:
+#       - ':percent'
+#       - ':dollar'
+#   - 'discount_amount' is the percentage/dollar discount to
+#     apply (per item)
+#   - 'discount_message' is the message to show when a discount
+#     is applied
+# ================================================================
+SPENDING_THRESHOLDS = [
+  {
+    customer_tag_match_type: :include,
+    customer_tags: ["wholesale-new","wholesale"],
+    threshold: 400,
+    discount_type: :percent,
+    discount_amount: 10,
+    discount_message: 'Spend 400 and get 10% off!',
+  }
+]
+
+# ================================ Script Code (do not edit) ================================
+# ================================================================
+# CustomerTagSelector
+#
+# Finds whether the supplied customer has any of the entered tags.
+# ================================================================
+class CustomerTagSelector
+  def initialize(match_type, tags)
+    @comparator = match_type == :include ? 'any?' : 'none?'
+    @tags = tags.map { |tag| tag.downcase.strip }
+  end
+
+  def match?(customer)
+    customer_tags = customer.tags.map { |tag| tag.downcase.strip }
+    (@tags & customer_tags).send(@comparator)
+  end
+end
+
+# ================================ Script Code (do not edit) ================================
+# ================================================================
+# DiscountApplicator
+#
+# Applies the entered discount to the supplied line item.
+# ================================================================
+class DiscountApplicator
+  def initialize(discount_type, discount_amount, discount_message)
+    @discount_type = discount_type
+    @discount_message = discount_message
+
+    @discount_amount = if discount_type == :percent
+      1 - (discount_amount * 0.01)
+    else
+      Money.new(cents: 100) * discount_amount
+    end
+  end
+
+  def apply(line_item)
+    new_line_price = if @discount_type == :percent
+      line_item.line_price * @discount_amount
+    else
+      [line_item.line_price - (@discount_amount * line_item.quantity), Money.zero].max
+    end
+
+    line_item.change_line_price(new_line_price, message: @discount_message)
+  end
+end
+
+# ================================================================
+# TieredDiscountBySpendCampaign
+#
+# If the cart total is greater than (or equal to) an entered
+# threshold, the associated discount is applied to each item.
+# ================================================================
+class TieredDiscountBySpendCampaign
+  def initialize(tiers)
+    @tiers = tiers.sort_by { |tier| tier[:threshold] }.reverse
+  end
+
+  def run(cart)
+    return unless cart.customer&.tags
+
+
+    @tier_limit = 400
+    if cart.customer.tags.include? "wholesale"
+      @tier_limit = 0
+    end
+
+    applicable_tier = @tiers.find { |tier| cart.subtotal_price >= (Money.new(cents: 100) * @tier_limit) }
+    return if applicable_tier.nil?
+
+    
+    customer_tag_selector = CustomerTagSelector.new(applicable_tier[:customer_tag_match_type], applicable_tier[:customer_tags])
+
+    return unless customer_tag_selector.match?(cart.customer)
+
+    discount_applicator = DiscountApplicator.new(
+      applicable_tier[:discount_type],
+      applicable_tier[:discount_amount],
+      applicable_tier[:discount_message]
+    )
+
+    cart.line_items.each do |line_item|
+      next if line_item.variant.product.gift_card?
+      discount_applicator.apply(line_item)
+    end
+  end
+end
+
+CAMPAIGNS = [
+  TieredDiscountBySpendCampaign.new(SPENDING_THRESHOLDS),
+]
+
+CAMPAIGNS.each do |campaign|
+  campaign.run(Input.cart)
+end
+
+Output.cart = Input.cart
