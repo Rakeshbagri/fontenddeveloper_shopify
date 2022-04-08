@@ -1,0 +1,11 @@
+
+          <ul class="swatch_color">
+            {% for pp in product.metafields.my_fields.color_option_1.value %}
+            <li><a href="{{ pp.handle }}">
+
+              <img src="{{ pp.featured_image | product_img_url: '70x70', crop: 'top' }}" alt="{{ pp.title }}">
+              </a>
+
+            </li>
+            {% endfor %}
+          </ul>
