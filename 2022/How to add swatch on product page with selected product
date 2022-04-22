@@ -1,0 +1,12 @@
+//      How to add swatch on product page with selected product
+
+ 	<ul class="swatch_color">
+	{% for pp in product.metafields.my_fields.color_option_1.value %}
+		<li><a href="{{ pp.handle }}">
+      
+      <img src="{{ pp.featured_image | product_img_url: 'large' }}">
+          </a>
+      
+      </li>
+	{% endfor %}
+	</ul>
