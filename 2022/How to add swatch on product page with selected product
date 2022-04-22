@@ -1,5 +1,7 @@
 //      How to add swatch on product page with selected product
 
+https://www.oloori.com/collections/new-arrivals/products/majestic-seamless-bras-charcoal
+
  	<ul class="swatch_color">
 	{% for pp in product.metafields.my_fields.color_option_1.value %}
 		<li><a href="{{ pp.handle }}">
