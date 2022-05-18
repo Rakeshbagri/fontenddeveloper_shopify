@@ -1,0 +1,14 @@
+minimum order quantity option on cart page and product page use meta fields 
+
+           
+Add on product page 
+min="{%- if product.metafields.my_fields.minimum_order_quantity != blank -%}{{ product.metafields.my_fields.minimum_order_quantity }}{% else %}1{%- endif -%}"
+
+
+
+Add on cart page 
+
+{%- if item.product.metafields.my_fields.minimum_order_quantity != blank -%}  
+{{ item.product.metafields.my_fields.minimum_order_quantity }}                      
+
+{%- endif -%}
