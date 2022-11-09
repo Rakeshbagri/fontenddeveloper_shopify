@@ -1,0 +1,28 @@
+Gorgias Chat Widget open click on custom buttons 
+
+
+
+<!--Gorgias Chat Widget Start--><script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=17817"></script>
+<script defer="defer" id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});</script><!--Gorgias Chat Widget End-->
+
+ <div class="gorg-custom-chatbox"><a class="chatbox-open"><span class="chat-img"><img src="{{ 'Union.png' | asset_url }}"></span> <span class="chat-text">Chat with us</span></a>  
+ </div>
+    
+  <script>
+    jQuery(document).ready(function($){
+      $(document).on('click', '.gorg-custom-chatbox .chatbox-open', function(){
+        $(this).removeClass('chatbox-open');
+        $(this).addClass('chatbox-close');
+        // $(this).find('.chat-text').text('Close the chat');
+        GorgiasChat.open();
+      })
+  
+      $(document).on('click', '.gorg-custom-chatbox .chatbox-close', function(){
+        $(this).removeClass('chatbox-close');
+        $(this).addClass('chatbox-open');
+        // $(this).find('.chat-text').text('Chat with us');
+        GorgiasChat.close();
+      })
+    })
+  </script>  
+   
