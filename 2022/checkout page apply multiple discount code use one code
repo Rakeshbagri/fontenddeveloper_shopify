@@ -1,0 +1,53 @@
+ #checkout page apply multiple discount code use one code
+             
+              jQuery(document).on('keyup','#checkout_reduction_code',function(){
+                if(!jquery('#checkout_reduction_code').closest('form').hasClass('apply_coupon_code_form')){
+                  jquery('#checkout_reduction_code').closest('form').addClass('apply_coupon_code_form'); 
+                }                
+              });
+              
+              if(jQuery('#checkout_clear_discount').val() == 1){               
+                var coupon_code = jQuery('form.edit_checkout .reduction-code__text').text();                
+                var total_price = Shopify.Checkout.estimatedPrice;
+                if(total_price >= 1000 && coupon_code == 'SPENDSAVE-10'){
+                    jquery('#checkout_reduction_code').val('SPENDSAVE-20');
+                    if(!jquery('#checkout_reduction_code').closest('form').hasClass('apply_coupon_code_form')){
+                      jquery('#checkout_reduction_code').closest('form').addClass('apply_coupon_code_form'); 
+                    }
+                    jquery('.apply_coupon_code_form #checkout_submit').prop('disabled',false); 
+                    jquery('.apply_coupon_code_form #checkout_submit').trigger('click'); 
+                }else if(total_price >= 1000 && coupon_code == 'SPENDSAVE-15'){
+                   jquery('#checkout_reduction_code').val('SPENDSAVE-20');
+                    if(!jquery('#checkout_reduction_code').closest('form').hasClass('apply_coupon_code_form')){
+                      jquery('#checkout_reduction_code').closest('form').addClass('apply_coupon_code_form'); 
+                    }
+                    jquery('.apply_coupon_code_form #checkout_submit').prop('disabled',false);
+                    jquery('.apply_coupon_code_form #checkout_submit').trigger('click');
+                }else if(total_price >= 500 && coupon_code == 'SPENDSAVE-10'){
+                    jquery('#checkout_reduction_code').val('SPENDSAVE-15');
+                    if(!jquery('#checkout_reduction_code').closest('form').hasClass('apply_coupon_code_form')){
+                      jquery('#checkout_reduction_code').closest('form').addClass('apply_coupon_code_form');                     }
+                    jquery('.apply_coupon_code_form #checkout_submit').prop('disabled',false);
+                    jquery('.apply_coupon_code_form #checkout_submit').trigger('click'); 
+                } 
+              }
+              
+              jquery('#checkout_reduction_code').closest('form').addClass('apply_coupon_code_form'); 
+              jquery(document).on('click','.apply_coupon_code_form #checkout_submit',function(e){
+                var coupon = jquery.trim(jquery('#checkout_reduction_code').val());
+                if(coupon == 'SPENDSAVE' || coupon == 'Spendsave' || coupon == 'spendsave'){
+                   e.preventDefault();   
+                   var total_price = Shopify.Checkout.estimatedPrice;
+                   if(total_price >= 500 && total_price < 750){ 
+                      jquery('#checkout_reduction_code').val('SPENDSAVE-10');
+                   }else if(total_price >= 750 && total_price < 1000){
+                     jquery('#checkout_reduction_code').val('SPENDSAVE-15');
+                   }else if(total_price >= 1000){
+                     jquery('#checkout_reduction_code').val('SPENDSAVE-20');
+                   }                   
+                   jquery('.apply_coupon_code_form #checkout_submit').trigger('click');
+                }   
+              }); 
+            }
+        }); 
+       
