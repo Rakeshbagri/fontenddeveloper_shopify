@@ -1,0 +1,34 @@
+<script>
+  document.getElementById("full_show").style.display = "none";
+  document.getElementById("mores_des").onclick = displayContent;
+  function displayContent() {
+    document.getElementById("full_show").style.display = "block";
+    document.getElementById("collection_content_desktop").style.display = "none";
+    document.getElementById("mores_des").style.display = "none";
+  };
+  document.getElementById("less_des").onclick = hideContent;
+  const scrollTop = document.getElementById('collection_content_desktop');
+
+  function hideContent() {
+    document.getElementById("mores_des").style.display = "block";
+    document.getElementById("full_show").style.display = "none";
+    document.getElementById("collection_content_desktop").style.display = "block";
+    //document.getElementById('collection_content_desktop').scrollIntoView({ behavior: 'smooth' });
+    //   document.getElementById('collection_content_desktop').scrollIntoView();
+  };
+  
+</script>
+
+
+
+     <div class="full-des collection-hero__description rte">
+          <div id="collection_content_desktop" class="small-hide medium-hide">{{ collection.description | strip_html | truncatewords: 50 }}</div>
+          <div id="collection_content_desktop" class="large-up-hide">{{ collection.description | strip_html | truncatewords: 35 }}</div>
+          {% unless collection.url contains '/collections/all' %}
+          <span id="mores_des" class="mores"></span>
+          {% endunless %}
+        </div>
+        <div id="full_show" class="collection-hero__description rte">
+          {{ collection.description }}
+        <span id="less_des" class="less"></span>
+        </div>     
